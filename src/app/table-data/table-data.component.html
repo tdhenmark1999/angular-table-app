@@ -1,0 +1,65 @@
+<div class="table-container">
+    <div class="wrapper">
+        <table mat-table [dataSource]="dataSource" matSort>
+            <!-- Column Definitions -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="id" class="custom-table-column">
+                    id
+
+                    <button mat-icon-button class="toggle-filter"
+                        (click)="toggleFilter('id'); $event.stopPropagation()">
+                        <span class="material-icons">filter_list</span>
+                    </button>
+
+                    <input *ngIf="isFilterVisible('id')" type="text" (input)="applyFilter($event, 'id')"
+                        placeholder="Filter">
+                </th>
+
+                <td mat-cell *matCellDef="let element" class="custom-table-column">{{ element.id }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="name" class="custom-table-column">
+                    Name
+                    <button mat-icon-button class="toggle-filter"
+                        (click)="toggleFilter('name'); $event.stopPropagation()">
+                        <span class="material-icons">filter_list</span>
+                    </button>
+                    <input *ngIf="isFilterVisible('name')" type="text" (input)="applyFilter($event, 'name')"
+                        placeholder="Filter">
+                </th>
+                <td mat-cell *matCellDef="let element" class="custom-table-column">{{ element.name }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="email" class="custom-table-column">
+                    email
+                    <button mat-icon-button class="toggle-filter"
+                        (click)="toggleFilter('email'); $event.stopPropagation()">
+                        <span class="material-icons">filter_list</span>
+                    </button>
+                    <input *ngIf="isFilterVisible('email')" type="text" (input)="applyFilter($event, 'email')"
+                        placeholder="Filter">
+                </th>
+                <td mat-cell *matCellDef="let element" class="custom-table-column">{{ element.email }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="gender">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header="gender" class="custom-table-column">
+                    gender
+                    <button mat-icon-button class="toggle-filter"
+                        (click)="toggleFilter('gender'); $event.stopPropagation()">
+                        <span class="material-icons">filter_list</span>
+                    </button>
+                    <input *ngIf="isFilterVisible('gender')" type="text" (input)="applyFilter($event, 'gender')"
+                        placeholder="Filter">
+                </th>
+                <td mat-cell *matCellDef="let element" class="custom-table-column">{{ element.gender }}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</div>
